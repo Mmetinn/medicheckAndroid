@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "172686796840",
+    "firebase_url": "https://medicheckorjinal.firebaseio.com",
+    "project_id": "medicheckorjinal",
+    "storage_bucket": "medicheckorjinal.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:172686796840:android:006826944435bda3",
+        "android_client_info": {
+          "package_name": "com.example.a90531.medicheck"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "172686796840-nomqp0ujfekmph8pl50am9ahuchafknk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCtKAqUIwcmVD7vY03xMCoPR6TeyyrDsnY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
