@@ -65,6 +65,7 @@ public class BackgroundWorker_class extends AsyncTask<String,String ,String > {
                 String hastalik=params[8];
                 String tarih=params[9];
                 String cinsiyet=params[10];
+                String profilePic=params[11];
 
                 URL url = new URL(registeredUrl);
                 HttpURLConnection httpURLConnection = (HttpURLConnection)url.openConnection();
@@ -83,6 +84,7 @@ public class BackgroundWorker_class extends AsyncTask<String,String ,String > {
                         +URLEncoder.encode("hastalik","UTF-8")+"="+URLEncoder.encode(hastalik,"UTF-8")+"&"
                         +URLEncoder.encode("tarih","UTF-8")+"="+URLEncoder.encode(tarih,"UTF-8")+"&"
                         +URLEncoder.encode("cinsiyet","UTF-8")+"="+URLEncoder.encode(cinsiyet,"UTF-8")+"&"
+                        +URLEncoder.encode("profilepic","UTF-8")+"="+URLEncoder.encode(profilePic,"UTF-8")+"&"
                         +URLEncoder.encode("tc","UTF-8")+"="+URLEncoder.encode(tc,"UTF-8");
                 bufferedWriter.write(postData);
                 bufferedWriter.flush();

@@ -3,20 +3,33 @@ package com.example.a90531.medicheck;
 import android.app.ActionBar;
 import android.app.DatePickerDialog;
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.media.Image;
+import android.net.Uri;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Base64;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.PopupMenu;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import java.io.ByteArrayOutputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.Calendar;
 
 public class RegisterUserActivity extends AppCompatActivity implements AsyncResponse{
@@ -29,7 +42,12 @@ public class RegisterUserActivity extends AppCompatActivity implements AsyncResp
     TextView txDate;
     private RadioGroup radioSexGroup;
     private RadioButton radioSexButton;
-
+    Button profilepicBtn;
+    ImageView profilePicIv;
+    PopupMenu popup;
+    private static int RESULT_LOAD_IMAGE_GALERI=101;
+    private static int RESULT_LOAD_IMAGE_KAMERA=102;
+    Bitmap thumbnail;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +65,8 @@ public class RegisterUserActivity extends AppCompatActivity implements AsyncResp
         txDate=(TextView)findViewById(R.id.dateTx);
         etHastalik=(EditText)findViewById(R.id.hastaAdiEt);
         radioSexGroup = (RadioGroup) findViewById(R.id.radioSex);
+        profilepicBtn=(Button)findViewById(R.id.btnProfilepic);
+        profilePicIv=(ImageView)findViewById(R.id.ivProfilePic);
 
         /*LinearLayout ll = (LinearLayout) findViewById(R.id.linear);
         dp = new DatePicker(RegisterUserActivity.this);
@@ -92,6 +112,60 @@ public class RegisterUserActivity extends AppCompatActivity implements AsyncResp
             }
         });
 
+        popup = new PopupMenu(RegisterUserActivity.this, profilepicBtn);
+        popup.getMenuInflater().inflate(R.menu.kamera_galeri, popup.getMenu());
+
+        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.kameraAc:
+                        Intent intentKamera = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                        startActivityForResult(intentKamera,RESULT_LOAD_IMAGE_KAMERA);
+                        return  true;
+                    case R.id.galeriAc:
+                        Intent intentGaleri = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                        startActivityForResult(intentGaleri,RESULT_LOAD_IMAGE_GALERI);
+                        return true;
+                    default :
+                        return false;
+                }
+            }
+        });
+
+    }
+
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode == RESULT_LOAD_IMAGE_GALERI){
+            if(resultCode == RESULT_OK) {
+                try {
+                    final Uri imageUri = data.getData();
+                    final InputStream imageStream = getContentResolver().openInputStream(imageUri);
+                    final Bitmap selectedImage = BitmapFactory.decodeStream(imageStream);
+
+                    profilePicIv.setImageBitmap(selectedImage);
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+            }
+
+        }else if(requestCode == RESULT_LOAD_IMAGE_KAMERA){
+            if(resultCode == RESULT_OK) {
+                onCaptureImageResult(data);
+            }
+        }
+    }
+
+    private void onCaptureImageResult(Intent data) {
+        thumbnail = (Bitmap) data.getExtras().get("data");
+        profilePicIv.setMaxWidth(200);
+        profilePicIv.setImageBitmap(thumbnail);
+    }
+
+    public void resimClicked(View view){
+        popup.show();
     }
 
     public void userKaydiClicked(View view){
@@ -109,11 +183,18 @@ public class RegisterUserActivity extends AppCompatActivity implements AsyncResp
         int selectedId=radioSexGroup.getCheckedRadioButtonId();
         radioSexButton=(RadioButton)findViewById(selectedId);
         String cinsiyet=radioSexButton.getText().toString();
+        profilePicIv.setDrawingCacheEnabled(true);
+        profilePicIv.buildDrawingCache();
+        Bitmap bitmap = profilePicIv.getDrawingCache();
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+        byte[] data = baos.toByteArray();
+        String dataStr = Base64.encodeToString(data, Base64.DEFAULT);
 
         String type="registered";
         BackgroundWorker_class backgroundWorker_class2 = new BackgroundWorker_class(this);
         backgroundWorker_class2.delegate=RegisterUserActivity.this;
-        backgroundWorker_class2.execute(type,kulad,sifre,adi,soyadi,email,telefon,tc,hastalik,tarih,cinsiyet);
+        backgroundWorker_class2.execute(type,kulad,sifre,adi,soyadi,email,telefon,tc,hastalik,tarih,cinsiyet,dataStr);
         Toast.makeText(getApplicationContext(),"Kayıt Başarılı",Toast.LENGTH_SHORT).show();
     }
 
