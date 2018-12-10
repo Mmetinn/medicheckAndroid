@@ -27,8 +27,6 @@ public class selectDoctorActivity extends AppCompatActivity implements AsyncResp
     ArrayList<String> doktorlar= new ArrayList<>();
     ArrayList<String> idler2= new ArrayList<>();
     ArrayList<String> doktorlar2= new ArrayList<>();
-    ArrayList<String> kayitliDoktor=new ArrayList<>();
-    ArrayList<String> kayitliUser=new ArrayList<>();
     EditText etSearch;
     String userId="";
     @Override

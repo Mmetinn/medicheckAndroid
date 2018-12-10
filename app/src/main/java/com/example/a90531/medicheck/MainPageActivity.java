@@ -37,7 +37,16 @@ public class MainPageActivity extends AppCompatActivity {
                         startActivity(intent);
                         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                         break;
-
+                    case R.id.randevu:
+                        Intent intent2 = new Intent(MainPageActivity.this,HastaneRandevuActivity.class);
+                        startActivity(intent2);
+                        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                        break;
+                    case R.id.randevu_list:
+                        Intent intent3 = new Intent(MainPageActivity.this,randevuListActivity.class);
+                        startActivity(intent3);
+                        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                        break;
                 }
                 //drawerLayout.closeDrawer();
                 return true;

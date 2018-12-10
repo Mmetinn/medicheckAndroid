@@ -43,6 +43,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".olcumKaydetActivity" />
+        <activity android:name=".HastaneRandevuActivity" />
+        <activity android:name=".RandevuKaydetActivity" />
+        <activity android:name=".randevuListActivity" />
+
 
         <receiver
             android:name=".GcmBroadcastReceiver"

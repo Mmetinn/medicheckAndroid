@@ -41,6 +41,9 @@ public class BackgroundWorker_class extends AsyncTask<String,String ,String > {
         String olcumkaydetUrl="http://192.168.0.10/medicheck/medicheckDB/olcumkaydet.php";
         String getolcumlerUrl="http://192.168.0.10/medicheck/medicheckDB/getolcumler.php";
         String getkayitlidoktorlarUrl="http://192.168.0.10/medicheck/medicheckDB/getdoktorhasta.php";
+        String getpatientsDoctors="http://192.168.0.10/medicheck/medicheckDB/patientsDoctors.php";
+        String setAppointmetUrl="http://192.168.0.10/medicheck/medicheckDB/setAppointmet.php";
+        String listAppointmetUrl="http://192.168.0.10/medicheck/medicheckDB/listAppointment.php";
 
         if(gcm==null) {
             gcm = GoogleCloudMessaging.getInstance(context);//GoogleCloudMessaging objesi oluşturduk
@@ -295,6 +298,111 @@ public class BackgroundWorker_class extends AsyncTask<String,String ,String > {
 
                 BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream,"UTF-8"));
 
+                bufferedWriter.flush();
+                bufferedWriter.close();
+                outputStream.close();
+                InputStream inputStream = httpURLConnection.getInputStream();
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream,"iso-8859-1"));
+                String result="";
+                String line="";
+                while ((line = bufferedReader.readLine())!=null){
+                    result+=line;
+                }
+                bufferedReader.close();
+                inputStream.close();
+                httpURLConnection.disconnect();
+                return result;
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }else if(type.equals("getPatientsDoctors")){
+            String hastaId=params[1];
+            try {
+                URL url = new URL(getpatientsDoctors);
+                HttpURLConnection httpURLConnection = (HttpURLConnection)url.openConnection();
+                httpURLConnection.setRequestMethod("POST");
+                httpURLConnection.setDoOutput(true);
+                httpURLConnection.setDoInput(true);
+                OutputStream outputStream = httpURLConnection.getOutputStream();
+
+                BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream,"UTF-8"));
+                String postData = URLEncoder.encode("hastaId","UTF-8")+"="+URLEncoder.encode(hastaId,"UTF-8");
+                bufferedWriter.write(postData);
+
+                bufferedWriter.flush();
+                bufferedWriter.close();
+                outputStream.close();
+                InputStream inputStream = httpURLConnection.getInputStream();
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream,"iso-8859-1"));
+                String result="";
+                String line="";
+                while ((line = bufferedReader.readLine())!=null){
+                    result+=line;
+                }
+                bufferedReader.close();
+                inputStream.close();
+                httpURLConnection.disconnect();
+                return result;
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }else if(type.equals("registerAppointment")){
+            try {
+                String saat=params[1];
+                String tarih=params[2];
+                String hasta_id=params[3];
+                String doktor_id=params[4];
+                String appo_date=tarih+" "+saat;
+
+                URL url = new URL(setAppointmetUrl);
+                HttpURLConnection httpURLConnection = (HttpURLConnection)url.openConnection();
+                httpURLConnection.setRequestMethod("POST");
+                httpURLConnection.setDoOutput(true);
+                httpURLConnection.setDoInput(true);
+                OutputStream outputStream = httpURLConnection.getOutputStream();
+
+                BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream,"UTF-8"));
+                String postData = URLEncoder.encode("hasta_id","UTF-8")+"="+URLEncoder.encode(hasta_id,"UTF-8")+"&"
+                        +URLEncoder.encode("doktor_id","UTF-8")+"="+URLEncoder.encode(doktor_id,"UTF-8")+"&"
+                        +URLEncoder.encode("appo_date","UTF-8")+"="+URLEncoder.encode(appo_date,"UTF-8");
+                bufferedWriter.write(postData);
+                bufferedWriter.flush();
+                bufferedWriter.close();
+                outputStream.close();
+                InputStream inputStream = httpURLConnection.getInputStream();
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream,"iso-8859-1"));
+                String result="";
+                String line="";
+                while ((line = bufferedReader.readLine())!=null){
+                    result+=line;
+                }
+                bufferedReader.close();
+                inputStream.close();
+                httpURLConnection.disconnect();
+                return result;
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }else if(type.equals("listAppointment")){
+            try {
+                String hasta_id=params[1];
+
+                URL url = new URL(listAppointmetUrl);
+                HttpURLConnection httpURLConnection = (HttpURLConnection)url.openConnection();
+                httpURLConnection.setRequestMethod("POST");
+                httpURLConnection.setDoOutput(true);
+                httpURLConnection.setDoInput(true);
+                OutputStream outputStream = httpURLConnection.getOutputStream();
+
+                BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream,"UTF-8"));
+                String postData = URLEncoder.encode("hasta_id","UTF-8")+"="+URLEncoder.encode(hasta_id,"UTF-8");
+                bufferedWriter.write(postData);
                 bufferedWriter.flush();
                 bufferedWriter.close();
                 outputStream.close();

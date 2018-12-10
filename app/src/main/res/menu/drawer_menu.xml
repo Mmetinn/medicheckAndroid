@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:id="@+id/olcumGir" android:title="@string/olcumgirText" android:icon="@drawable/ic_olcum_gir"></item>
-    <item android:id="@+id/item1" android:title="item" android:icon="@drawable/cast_abc_scrubber_control_to_pressed_mtrl_000"></item>
-    <item android:id="@+id/item2" android:title="item" android:icon="@drawable/cast_abc_scrubber_control_to_pressed_mtrl_000"></item>
+    <item android:id="@+id/randevu" android:title="Randevu Kaydet" android:icon="@drawable/ic_hospital_hastane"></item>
+    <item android:id="@+id/randevu_list" android:title="Randevu Listele" android:icon="@drawable/ic_olcum_gir"></item>
     <item android:id="@+id/item3" android:title="item" android:icon="@drawable/cast_abc_scrubber_control_to_pressed_mtrl_000"></item>
     <item android:id="@+id/item4" android:title="item" android:icon="@drawable/cast_abc_scrubber_control_to_pressed_mtrl_000"></item>
     <item android:id="@+id/item5" android:title="item" android:icon="@drawable/cast_abc_scrubber_control_to_pressed_mtrl_000"></item>
