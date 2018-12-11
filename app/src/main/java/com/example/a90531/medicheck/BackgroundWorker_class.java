@@ -44,7 +44,9 @@ public class BackgroundWorker_class extends AsyncTask<String,String ,String > {
         String getpatientsDoctors="http://192.168.0.10/medicheck/medicheckDB/patientsDoctors.php";
         String setAppointmetUrl="http://192.168.0.10/medicheck/medicheckDB/setAppointmet.php";
         String listAppointmetUrl="http://192.168.0.10/medicheck/medicheckDB/listAppointment.php";
-
+        String registerMedicUrl="http://192.168.0.10/medicheck/medicheckDB/registerMedic.php";
+        String listMedicUrl="http://192.168.0.10/medicheck/medicheckDB/listMedic.php";
+        String hastaDoktorKayitUrl="http://192.168.0.10/medicheck/medicheckDB/doktrHastaKayit.php";
         if(gcm==null) {
             gcm = GoogleCloudMessaging.getInstance(context);//GoogleCloudMessaging objesi oluşturduk
         }
@@ -402,6 +404,119 @@ public class BackgroundWorker_class extends AsyncTask<String,String ,String > {
 
                 BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream,"UTF-8"));
                 String postData = URLEncoder.encode("hasta_id","UTF-8")+"="+URLEncoder.encode(hasta_id,"UTF-8");
+                bufferedWriter.write(postData);
+                bufferedWriter.flush();
+                bufferedWriter.close();
+                outputStream.close();
+                InputStream inputStream = httpURLConnection.getInputStream();
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream,"iso-8859-1"));
+                String result="";
+                String line="";
+                while ((line = bufferedReader.readLine())!=null){
+                    result+=line;
+                }
+                bufferedReader.close();
+                inputStream.close();
+                httpURLConnection.disconnect();
+                return result;
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }else if(type.equals("registerMedic")){
+            try {
+                String userId=params[1];
+                String ilac_adi=params[2];
+                String ilac_aciklama=params[3];
+                String ilac_actok=params[4];
+                String ilac_kacdefa=params[5];
+                String ilac_sure=params[6];
+                String dataStr=params[7];
+
+                URL url = new URL(registerMedicUrl);
+                HttpURLConnection httpURLConnection = (HttpURLConnection)url.openConnection();
+                httpURLConnection.setRequestMethod("POST");
+                httpURLConnection.setDoOutput(true);
+                httpURLConnection.setDoInput(true);
+                OutputStream outputStream = httpURLConnection.getOutputStream();
+
+                BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream,"UTF-8"));
+                String postData = URLEncoder.encode("hasta_id","UTF-8")+"="+URLEncoder.encode(userId,"UTF-8")+"&"
+                        +URLEncoder.encode("ilac_adi","UTF-8")+"="+URLEncoder.encode(ilac_adi,"UTF-8")+"&"
+                        +URLEncoder.encode("ilac_aciklama","UTF-8")+"="+URLEncoder.encode(ilac_aciklama,"UTF-8")+"&"
+                        +URLEncoder.encode("ilac_actok","UTF-8")+"="+URLEncoder.encode(ilac_actok,"UTF-8")+"&"
+                        +URLEncoder.encode("ilac_kacdefa","UTF-8")+"="+URLEncoder.encode(ilac_kacdefa,"UTF-8")+"&"
+                        +URLEncoder.encode("ilac_sure","UTF-8")+"="+URLEncoder.encode(ilac_sure,"UTF-8")+"&"
+                        +URLEncoder.encode("dataStr","UTF-8")+"="+URLEncoder.encode(dataStr,"UTF-8");
+                bufferedWriter.write(postData);
+                bufferedWriter.flush();
+                bufferedWriter.close();
+                outputStream.close();
+                InputStream inputStream = httpURLConnection.getInputStream();
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream,"iso-8859-1"));
+                String result="";
+                String line="";
+                while ((line = bufferedReader.readLine())!=null){
+                    result+=line;
+                }
+                bufferedReader.close();
+                inputStream.close();
+                httpURLConnection.disconnect();
+                return result;
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }else if(type.equals("listMedic")){
+            try {
+                String userId=params[1];
+
+                URL url = new URL(listMedicUrl);
+                HttpURLConnection httpURLConnection = (HttpURLConnection)url.openConnection();
+                httpURLConnection.setRequestMethod("POST");
+                httpURLConnection.setDoOutput(true);
+                httpURLConnection.setDoInput(true);
+                OutputStream outputStream = httpURLConnection.getOutputStream();
+
+                BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream,"UTF-8"));
+                String postData = URLEncoder.encode("hasta_id","UTF-8")+"="+URLEncoder.encode(userId,"UTF-8");
+                bufferedWriter.write(postData);
+                bufferedWriter.flush();
+                bufferedWriter.close();
+                outputStream.close();
+                InputStream inputStream = httpURLConnection.getInputStream();
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream,"iso-8859-1"));
+                String result="";
+                String line="";
+                while ((line = bufferedReader.readLine())!=null){
+                    result+=line;
+                }
+                bufferedReader.close();
+                inputStream.close();
+                httpURLConnection.disconnect();
+                return result;
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }else if(type.equals("hastaDoktorKayit")){
+            try {
+                String userId=params[1];
+                String doktorId=params[2];
+
+                URL url = new URL(hastaDoktorKayitUrl);
+                HttpURLConnection httpURLConnection = (HttpURLConnection)url.openConnection();
+                httpURLConnection.setRequestMethod("POST");
+                httpURLConnection.setDoOutput(true);
+                httpURLConnection.setDoInput(true);
+                OutputStream outputStream = httpURLConnection.getOutputStream();
+
+                BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream,"UTF-8"));
+                String postData = URLEncoder.encode("hasta_id","UTF-8")+"="+URLEncoder.encode(userId,"UTF-8")+"&"
+                        +URLEncoder.encode("doktorId","UTF-8")+"="+URLEncoder.encode(doktorId,"UTF-8");
                 bufferedWriter.write(postData);
                 bufferedWriter.flush();
                 bufferedWriter.close();

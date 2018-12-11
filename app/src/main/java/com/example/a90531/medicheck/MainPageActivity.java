@@ -47,6 +47,21 @@ public class MainPageActivity extends AppCompatActivity {
                         startActivity(intent3);
                         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                         break;
+                    case R.id.ilac_kaydet:
+                        Intent intent4 = new Intent(MainPageActivity.this,ilacKaydetActivity.class);
+                        startActivity(intent4);
+                        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                        break;
+                    case R.id.ilac_listele:
+                        Intent intent5 = new Intent(MainPageActivity.this,ilacListeActivity.class);
+                        startActivity(intent5);
+                        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                        break;
+                    case R.id.acil_numara:
+                        Intent intent6 = new Intent(MainPageActivity.this,acilNumberActivity.class);
+                        startActivity(intent6);
+                        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                        break;
                 }
                 //drawerLayout.closeDrawer();
                 return true;

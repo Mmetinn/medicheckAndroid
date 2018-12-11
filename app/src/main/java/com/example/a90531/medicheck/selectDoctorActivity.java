@@ -45,10 +45,14 @@ public class selectDoctorActivity extends AppCompatActivity implements AsyncResp
         backgroundWorker_class2.delegate=selectDoctorActivity.this;
         backgroundWorker_class2.execute("getkayitlidoktorlar");
 
-
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        userId=sharedPreferences.getString("userId","null");
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                BackgroundWorker_class backgroundWorker_class2 = new BackgroundWorker_class(selectDoctorActivity.this);
+                backgroundWorker_class2.delegate=selectDoctorActivity.this;
+                backgroundWorker_class2.execute("hastaDoktorKayit",idler.get(position),userId);
                 Intent i = new Intent(selectDoctorActivity.this,MainPageActivity.class);
                 SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                 SharedPreferences.Editor editor = sharedPreferences.edit(); //SharedPreferences'a kayıt eklemek için editor oluşturuyoruz

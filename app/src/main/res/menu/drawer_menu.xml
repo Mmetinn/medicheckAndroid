@@ -2,10 +2,10 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:id="@+id/olcumGir" android:title="@string/olcumgirText" android:icon="@drawable/ic_olcum_gir"></item>
     <item android:id="@+id/randevu" android:title="Randevu Kaydet" android:icon="@drawable/ic_hospital_hastane"></item>
-    <item android:id="@+id/randevu_list" android:title="Randevu Listele" android:icon="@drawable/ic_olcum_gir"></item>
-    <item android:id="@+id/item3" android:title="item" android:icon="@drawable/cast_abc_scrubber_control_to_pressed_mtrl_000"></item>
-    <item android:id="@+id/item4" android:title="item" android:icon="@drawable/cast_abc_scrubber_control_to_pressed_mtrl_000"></item>
-    <item android:id="@+id/item5" android:title="item" android:icon="@drawable/cast_abc_scrubber_control_to_pressed_mtrl_000"></item>
+    <item android:id="@+id/randevu_list" android:title="Randevu Listele" android:icon="@drawable/ic_list"></item>
+    <item android:id="@+id/ilac_kaydet" android:title="İlaç Kaydet" android:icon="@drawable/ic_medicine_ilacc"></item>
+    <item android:id="@+id/ilac_listele" android:title="İlaç Listele" android:icon="@drawable/ic_alarm_ekle"></item>
+    <item android:id="@+id/acil_numara" android:title="Acil Numaralar" android:icon="@drawable/ic_phone_number"></item>
     <item android:id="@+id/item6" android:title="item" android:icon="@drawable/cast_abc_scrubber_control_to_pressed_mtrl_000"></item>
     <item android:id="@+id/item7" android:title="item" android:icon="@drawable/cast_abc_scrubber_control_to_pressed_mtrl_000"></item>
     <item android:id="@+id/item8" android:title="item" android:icon="@drawable/cast_abc_scrubber_control_to_pressed_mtrl_000"></item>
