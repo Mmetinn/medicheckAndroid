@@ -18,16 +18,16 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class olcumGirActivity extends AppCompatActivity  implements AsyncResponse{
-    LinearLayout linnear;
-    EditText etDeger,etAciklama;
-    String deger,aciklama;
-    String hangiOlcum=null;
-    String userId;
-    SimpleDateFormat dateFormat= new SimpleDateFormat("dd MMM");
-    SimpleDateFormat dateFormatTx= new SimpleDateFormat("yyyy-MM-dd HH:mm");
-    String date = dateFormatTx.format(new Date().getTime());
-    String []array= new String[400];
-    ArrayList<String> olcumlerList = new ArrayList<>();
+    private LinearLayout linnear;
+    private EditText etDeger,etAciklama;
+    private String deger,aciklama;
+    private String hangiOlcum=null;
+    private String userId;
+    private SimpleDateFormat dateFormat= new SimpleDateFormat("dd MMM");
+    private SimpleDateFormat dateFormatTx= new SimpleDateFormat("yyyy-MM-dd HH:mm");
+    private String date = dateFormatTx.format(new Date().getTime());
+    private String []array= new String[400];
+    private ArrayList<String> olcumlerList = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,7 +52,7 @@ public class olcumGirActivity extends AppCompatActivity  implements AsyncRespons
         }
 
 
-      //  Toast.makeText(getApplicationContext(),"olcum degeri--> "+hangiOlcum,Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(),"olcum degeri--> "+hangiOlcum,Toast.LENGTH_SHORT).show();
     }
 
     public void btnClicked(View view){

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?><!-- suppress ALL -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.a90531.medicheck">
@@ -14,6 +14,8 @@
     <uses-permission android:name="com.example.gcm.permission.C2D_MESSAGE" />
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -33,24 +35,40 @@
             android:resource="@array/preloaded_fonts" />
 
         <activity android:name=".MainPageActivity" />
-        <activity android:name=".MessagesMainActivity" />
+        <activity
+            android:name=".MessagesMainActivity"
+            android:parentActivityName=".MainPageActivity" />
         <activity android:name=".KisilerActivity" />
-        <activity android:name=".MessageActivity" />
+        <activity
+            android:name=".MessageActivity"
+            android:parentActivityName=".MainPageActivity" />
         <activity android:name=".SplashScreenActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
-        <activity android:name=".olcumKaydetActivity" />
-        <activity android:name=".HastaneRandevuActivity" />
-        <activity android:name=".RandevuKaydetActivity" />
-        <activity android:name=".randevuListActivity" />
-        <activity android:name=".ilacKaydetActivity" />
-        <activity android:name=".ilacListeActivity" />
-        <activity android:name=".acilNumberActivity" />
-
+        <activity
+            android:name=".olcumKaydetActivity"
+            android:parentActivityName=".MainPageActivity" />
+        <activity
+            android:name=".HastaneRandevuActivity"
+            android:parentActivityName=".MainPageActivity" />
+        <activity
+            android:name=".RandevuKaydetActivity"
+            android:parentActivityName=".MainPageActivity" />
+        <activity
+            android:name=".randevuListActivity"
+            android:parentActivityName=".MainPageActivity" />
+        <activity
+            android:name=".ilacKaydetActivity"
+            android:parentActivityName=".MainPageActivity" />
+        <activity
+            android:name=".ilacListeActivity"
+            android:parentActivityName=".MainPageActivity" />
+        <activity
+            android:name=".acilNumberActivity"
+            android:parentActivityName=".MainPageActivity" />
+        <activity
+            android:name=".alarmKaydetActivity"
+            android:parentActivityName=".MainPageActivity" />
 
         <receiver
             android:name=".GcmBroadcastReceiver"
@@ -68,8 +86,23 @@
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
-        <activity android:name=".olcumGirActivity" />
-        <activity android:name=".selectDoctorActivity"></activity>
+        <activity
+            android:name=".olcumGirActivity"
+            android:parentActivityName=".olcumKaydetActivity" />
+        <activity android:name=".selectDoctorActivity" />
+        <activity android:name=".mhrsWebViewActivity"
+            android:parentActivityName=".HastaneRandevuActivity"></activity>
+        <activity android:name=".spalshActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".informationActivity"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
     </application>
 
 </manifest>

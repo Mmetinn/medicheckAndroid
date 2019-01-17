@@ -14,4 +14,6 @@
         completions."
     </string>
     <string name="olcumgirText">Ölçüm gir</string>
+    <string name="my_preference">ne oldugu belirsinz</string>
+    <string name="my_preference_key">ne oldugu belirsin2</string>
 </resources>

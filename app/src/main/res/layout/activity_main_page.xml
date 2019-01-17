@@ -14,5 +14,210 @@
         app:menu="@menu/drawer_menu"
         android:layout_gravity="start">
     </android.support.design.widget.NavigationView>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:orientation="vertical"
+           android:gravity="center">
+
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:layout_gravity="center"
+               android:gravity="center"
+               android:orientation="horizontal">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:id="@+id/ll_agirlik">
+               <com.hookedonplay.decoviewlib.DecoView
+                   android:id="@+id/agirlikDecode"
+                   android:layout_width="90dp"
+                   android:layout_height="90dp"
+                   android:layout_margin="10dp"
+                   />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/agirlikTx"
+                        android:layout_gravity="center"
+                        android:text="Ağırlık"
+                        android:textSize="18dp"
+                        android:textStyle="bold"
+                        app:fontFamily="@font/abril_fatface" />
+                </LinearLayout>
+               <LinearLayout
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:orientation="vertical"
+                   android:id="@+id/ll_kansekeri">
+                   <com.hookedonplay.decoviewlib.DecoView
+                       android:id="@+id/kanSekeriDecode"
+                       android:layout_width="90dp"
+                       android:layout_height="90dp"
+                       android:layout_margin="10dp" />
+                   <TextView
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:layout_gravity="center"
+                       android:text="Kan Şekeri"
+                       android:textSize="14dp"
+                       android:textStyle="bold"
+                       app:fontFamily="@font/abril_fatface" />
+               </LinearLayout>
+               <LinearLayout
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:orientation="vertical"
+                   android:id="@+id/ll_adim">
+               <com.hookedonplay.decoviewlib.DecoView
+                   android:id="@+id/adimDecode"
+                   android:layout_width="90dp"
+                   android:layout_height="90dp"
+                   android:layout_margin="10dp" />
+                   <TextView
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:layout_gravity="center"
+                       android:text="Adım"
+                       android:textSize="18dp"
+                       android:textStyle="bold"
+                       app:fontFamily="@font/abril_fatface" />
+               </LinearLayout>
+           </LinearLayout>
+
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:orientation="horizontal"
+               android:layout_gravity="center"
+               android:gravity="center">
+               <LinearLayout
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:orientation="vertical"
+                   android:id="@+id/ll_nabiz">
+                   <com.hookedonplay.decoviewlib.DecoView
+                       android:id="@+id/nabizDecode"
+                       android:layout_width="90dp"
+                       android:layout_height="90dp"
+                       android:layout_margin="10dp"/>
+                   <TextView
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:layout_gravity="center"
+                       android:text="Nabız"
+                       android:textSize="18dp"
+                       android:textStyle="bold"
+                       app:fontFamily="@font/abril_fatface" />
+           </LinearLayout>
+           <LinearLayout
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:orientation="vertical">
+                   <com.hookedonplay.decoviewlib.DecoView
+                       android:id="@+id/kanBasinciDecode"
+                       android:layout_width="90dp"
+                       android:layout_height="90dp"
+                       android:layout_margin="10dp"
+                       />
+                   <TextView
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:layout_gravity="center"
+                       android:text="Kan Basıncı"
+                       android:textSize="14dp"
+                       android:textStyle="bold"
+                       app:fontFamily="@font/abril_fatface" />
+           </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                   <com.hookedonplay.decoviewlib.DecoView
+                       android:id="@+id/alinanKaloriDecode"
+                       android:layout_width="90dp"
+                       android:layout_height="90dp"
+                       android:layout_margin="10dp"/>
+                   <TextView
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:layout_gravity="center"
+                       android:text="Alınan Kalori"
+                       android:textSize="14dp"
+                       android:textStyle="bold"
+                       app:fontFamily="@font/abril_fatface" />
+           </LinearLayout>
+           </LinearLayout>
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:orientation="horizontal"
+               android:layout_gravity="center"
+               android:gravity="center">
+               <LinearLayout
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:orientation="vertical">
+                   <com.hookedonplay.decoviewlib.DecoView
+                       android:id="@+id/harcananKaloriDecode"
+                       android:layout_width="100dp"
+                       android:layout_height="100dp"
+                       android:layout_margin="10dp"/>
+                   <TextView
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:layout_gravity="center"
+                       android:text="Harcanan Kalori"
+                       android:textSize="14dp"
+                       android:textStyle="bold"
+                       app:fontFamily="@font/abril_fatface" />
+           </LinearLayout>
+               <LinearLayout
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:orientation="vertical">
+                   <com.hookedonplay.decoviewlib.DecoView
+                       android:id="@+id/kolestrolDecode"
+                       android:layout_width="100dp"
+                       android:layout_height="100dp"
+                       android:layout_margin="10dp"/>
+                   <TextView
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:layout_gravity="center"
+                       android:text="Kolestrol"
+                       android:textSize="16dp"
+                       android:textStyle="bold"
+                       app:fontFamily="@font/abril_fatface" />
+           </LinearLayout>
+               <LinearLayout
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:orientation="vertical">
+               <com.hookedonplay.decoviewlib.DecoView
+                   android:id="@+id/vucutSicakligiDecode"
+                   android:layout_width="100dp"
+                   android:layout_height="100dp"
+                   android:layout_margin="10dp"/>
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_gravity="center"
+                   android:text="Vucut Sıcaklığı"
+                   android:textSize="14dp"
+                   android:textStyle="bold"
+                   app:fontFamily="@font/abril_fatface" />
+           </LinearLayout>
+           </LinearLayout>
+       </LinearLayout>
+
+
+    </ScrollView>
 
 </android.support.v4.widget.DrawerLayout>

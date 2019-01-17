@@ -65,7 +65,7 @@ public class randevuListActivity extends AppCompatActivity implements AsyncRespo
             //bu yüzden doktorlar.add(a[1]) elmaanını en son satır için çekerken indexoutofboundsexeception hatası alıyorum.
             while (sayac < dizi.length - 1) {
                 a = dizi[sayac].trim().split("--");
-                randevu.add(a[0]+" "+a[1]+" "+tarih);
+                randevu.add(a[0]+" "+a[1]+" "+a[2]);
                 sayac++;
             }
 
@@ -103,7 +103,7 @@ public class randevuListActivity extends AppCompatActivity implements AsyncRespo
                 tx3 = new TextView(randevuListActivity.this);
                 tx4 = new TextView(randevuListActivity.this);
                 tx5 = new TextView(randevuListActivity.this);*/
-                tx1.setText("Randevu Bilgileri" + ": " + randevu.get(j));
+                tx1.setText("Randevu Bilgileri" + ": " + arrayRandevu.get(j));
                 /*tx2.setText(this.getString(R.string.policlinic) + ": " + poliklinikAd[j]);
                 tx3.setText(this.getString(R.string.doctor_name) + ": " + doktorAd[j]);
                 tx4.setText(this.getString(R.string.date_text) + ": " + tarih[j]);

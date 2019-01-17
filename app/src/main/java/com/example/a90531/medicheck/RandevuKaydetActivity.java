@@ -153,7 +153,7 @@ public class RandevuKaydetActivity extends AppCompatActivity implements AsyncRes
             String[] a = new String[100];
             //dizi.length-1 olmasının sebebi php dosyasından verileri çekerken en sona doktor verisi mi hasta_doktor
             //verisi mi olduğu bilgisini atıyorum ve bu deger -- ile splitlenemiyor ve dizinin ikinci elmanı mevcut olmuyor
-            //bu yüzden doktorlar.add(a[1]) elmaanını en son satır için çekerken indexoutofboundsexeception hatası alıyorum.
+            //bu yüzden doktorlar.add(a[1]) elemanını en son satır için çekerken indexoutofboundsexeception hatası alıyorum.
             while (sayac < dizi.length - 1) {
                 a = dizi[sayac].trim().split("--");
                 idler.add(a[0]);

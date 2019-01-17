@@ -17,9 +17,11 @@ public class HastaneRandevuActivity extends AppCompatActivity {
         setContentView(R.layout.activity_hastane_randevu);
     }
     public void hastaneRandevuClicked(View v){
-        Uri uri = Uri.parse("https://www.mhrs.gov.tr/Vatandas/");
+        /*Uri uri = Uri.parse("https://www.mhrs.gov.tr/Vatandas/");
         Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-        startActivity(intent);
+        startActivity(intent);*/
+        Intent i = new Intent(HastaneRandevuActivity.this,mhrsWebViewActivity.class);
+        startActivity(i);
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
     public void randevuKaydet(View v){

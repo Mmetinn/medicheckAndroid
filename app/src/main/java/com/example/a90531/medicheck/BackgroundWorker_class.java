@@ -34,7 +34,7 @@ public class BackgroundWorker_class extends AsyncTask<String,String ,String > {
     @Override
     protected String doInBackground(String... params) {
         String type=params[0];
-        String registeredUrl="http://192.168.0.10/medicheck/medicheckDB/registeredHasta.php";
+       /* String registeredUrl="http://192.168.0.10/medicheck/medicheckDB/registeredHasta.php";
         String loginUrl="http://192.168.0.10/medicheck/medicheckDB/login.php";
         String getdoctorsnUrl="http://192.168.0.10/medicheck/medicheckDB/getdoctors.php";
         String messagesendUrl="http://192.168.0.10/medicheck/medicheckDB/mesajgonder.php";
@@ -46,7 +46,33 @@ public class BackgroundWorker_class extends AsyncTask<String,String ,String > {
         String listAppointmetUrl="http://192.168.0.10/medicheck/medicheckDB/listAppointment.php";
         String registerMedicUrl="http://192.168.0.10/medicheck/medicheckDB/registerMedic.php";
         String listMedicUrl="http://192.168.0.10/medicheck/medicheckDB/listMedic.php";
-        String hastaDoktorKayitUrl="http://192.168.0.10/medicheck/medicheckDB/doktrHastaKayit.php";
+        String hastaDoktorKayitUrl="http://192.168.0.10/medicheck/medicheckDB/doktrHastaKayit.php";*/
+        /*String registeredUrl="http://192.168.43.247/medicheck/medicheckDB/registeredHasta.php";
+        String loginUrl="http://192.168.43.247/medicheck/medicheckDB/login.php";
+        String getdoctorsnUrl="http://192.168.43.247/medicheck/medicheckDB/getdoctors.php";
+        String messagesendUrl="http://192.168.43.247/medicheck/medicheckDB/mesajgonder.php";
+        String olcumkaydetUrl="http://192.168.43.247/medicheck/medicheckDB/olcumkaydet.php";
+        String getolcumlerUrl="http://192.168.43.247/medicheck/medicheckDB/getolcumler.php";
+        String getkayitlidoktorlarUrl="http://192.168.43.247/medicheck/medicheckDB/getdoktorhasta.php";
+        String getpatientsDoctors="http://192.168.43.247/medicheck/medicheckDB/patientsDoctors.php";
+        String setAppointmetUrl="http://192.168.43.247/medicheck/medicheckDB/setAppointmet.php";
+        String listAppointmetUrl="http://192.168.43.247/medicheck/medicheckDB/listAppointment.php";
+        String registerMedicUrl="http://192.168.43.247/medicheck/medicheckDB/registerMedic.php";
+        String listMedicUrl="http://192.168.43.247/medicheck/medicheckDB/listMedic.php";
+        String hastaDoktorKayitUrl="http://192.168.43.247/medicheck/medicheckDB/doktrHastaKayit.php";*/
+        String registeredUrl="http://169.254.153.254/medicheck/medicheckDB/registeredHasta.php";
+        String loginUrl="http://169.254.153.254/medicheck/medicheckDB/login.php";
+        String getdoctorsnUrl="http://169.254.153.254/medicheck/medicheckDB/getdoctors.php";
+        String messagesendUrl="http://169.254.153.254/medicheck/medicheckDB/mesajgonder.php";
+        String olcumkaydetUrl="http://169.254.153.254/medicheck/medicheckDB/olcumkaydet.php";
+        String getolcumlerUrl="http://169.254.153.254/medicheck/medicheckDB/getolcumler.php";
+        String getkayitlidoktorlarUrl="http://169.254.153.254/medicheck/medicheckDB/getdoktorhasta.php";
+        String getpatientsDoctors="http://169.254.153.254/medicheck/medicheckDB/patientsDoctors.php";
+        String setAppointmetUrl="http://169.254.153.254/medicheck/medicheckDB/setAppointmet.php";
+        String listAppointmetUrl="http://169.254.153.254/medicheck/medicheckDB/listAppointment.php";
+        String registerMedicUrl="http://169.254.153.254/medicheck/medicheckDB/registerMedic.php";
+        String listMedicUrl="http://169.254.153.254/medicheck/medicheckDB/listMedic.php";
+        String hastaDoktorKayitUrl="http://169.254.153.254/medicheck/medicheckDB/doktrHastaKayit.php";
         if(gcm==null) {
             gcm = GoogleCloudMessaging.getInstance(context);//GoogleCloudMessaging objesi oluşturduk
         }
