@@ -197,7 +197,7 @@ public class LoginActivity extends AppCompatActivity implements AsyncResponse  {
             SharedPreferences.Editor editor = sharedPreferences.edit(); //SharedPreferences'a kayıt eklemek için editor oluşturuyoruz
             editor.putString("userId",output.trim());
             editor.commit();
-            Intent i = new Intent(LoginActivity.this, selectDoctorActivity.class);
+            Intent i = new Intent(LoginActivity.this, MainPageActivity.class);
             startActivity(i);
         }else {
             Toast.makeText(getApplicationContext(),"Yanlış kullanıcı adı veya şifre",Toast.LENGTH_SHORT).show();

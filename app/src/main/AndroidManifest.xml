@@ -29,7 +29,12 @@
         <activity
             android:name=".LoginActivity"
             android:label="@string/title_activity_register_user" />
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/title_activity_register_user" />
+        <activity android:name=".ChatBoxActivity">
 
+        </activity>
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

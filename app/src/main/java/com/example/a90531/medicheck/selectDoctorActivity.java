@@ -29,6 +29,8 @@ public class selectDoctorActivity extends AppCompatActivity implements AsyncResp
     ArrayList<String> doktorlar2= new ArrayList<>();
     EditText etSearch;
     String userId="";
+    String doctor_id="";
+    final String onay_durumu="onaylanmadi";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,12 +55,37 @@ public class selectDoctorActivity extends AppCompatActivity implements AsyncResp
                 BackgroundWorker_class backgroundWorker_class2 = new BackgroundWorker_class(selectDoctorActivity.this);
                 backgroundWorker_class2.delegate=selectDoctorActivity.this;
                 backgroundWorker_class2.execute("hastaDoktorKayit",idler.get(position),userId);
-                Intent i = new Intent(selectDoctorActivity.this,MainPageActivity.class);
                 SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                 SharedPreferences.Editor editor = sharedPreferences.edit(); //SharedPreferences'a kayıt eklemek için editor oluşturuyoruz
                 editor.putString("doctorId",idler.get(position));
+                Toast.makeText(selectDoctorActivity.this,idler.get(position)+" "+userId,Toast.LENGTH_LONG).show();
                 editor.commit();
-                startActivity(i);
+              /*  BackgroundWorker_class backgroundWorker_class3 = new BackgroundWorker_class(selectDoctorActivity.this);
+                backgroundWorker_class3.delegate=selectDoctorActivity.this;
+                backgroundWorker_class3.execute("register_doctor_for_patient",idler.get(position),userId);*/
+
+                AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(selectDoctorActivity.this);
+                dlgAlert.setMessage("Doktor kayıt isteğinizi doktornuza göndermek istediğinizden emin misiniz?.");
+                dlgAlert.setTitle("MediCheck'ten mesaj var.");
+                dlgAlert.setPositiveButton("Hayır",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                return;
+                            }
+                        });
+                dlgAlert.setNegativeButton("Evet",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Intent i = new Intent(selectDoctorActivity.this,MainPageActivity.class);
+                                startActivity(i);
+                                Toast.makeText(selectDoctorActivity.this,"İsteğiniz gönderildi..",Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                );
+                dlgAlert.create().show();
+
             }
         });
 

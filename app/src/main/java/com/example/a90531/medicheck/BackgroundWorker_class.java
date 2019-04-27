@@ -34,7 +34,12 @@ public class BackgroundWorker_class extends AsyncTask<String,String ,String > {
     @Override
     protected String doInBackground(String... params) {
         String type=params[0];
-       /* String registeredUrl="http://192.168.0.10/medicheck/medicheckDB/registeredHasta.php";
+
+        /*
+        *
+        *
+        * //kingsuit
+        String registeredUrl="http://192.168.0.10/medicheck/medicheckDB/registeredHasta.php";
         String loginUrl="http://192.168.0.10/medicheck/medicheckDB/login.php";
         String getdoctorsnUrl="http://192.168.0.10/medicheck/medicheckDB/getdoctors.php";
         String messagesendUrl="http://192.168.0.10/medicheck/medicheckDB/mesajgonder.php";
@@ -46,8 +51,11 @@ public class BackgroundWorker_class extends AsyncTask<String,String ,String > {
         String listAppointmetUrl="http://192.168.0.10/medicheck/medicheckDB/listAppointment.php";
         String registerMedicUrl="http://192.168.0.10/medicheck/medicheckDB/registerMedic.php";
         String listMedicUrl="http://192.168.0.10/medicheck/medicheckDB/listMedic.php";
-        String hastaDoktorKayitUrl="http://192.168.0.10/medicheck/medicheckDB/doktrHastaKayit.php";*/
-        /*String registeredUrl="http://192.168.43.247/medicheck/medicheckDB/registeredHasta.php";
+        String hastaDoktorKayitUrl="http://192.168.0.10/medicheck/medicheckDB/doktrHastaKayit.php";
+        */
+
+        //meto
+        String registeredUrl="http://192.168.43.247/medicheck/medicheckDB/registeredHasta.php";
         String loginUrl="http://192.168.43.247/medicheck/medicheckDB/login.php";
         String getdoctorsnUrl="http://192.168.43.247/medicheck/medicheckDB/getdoctors.php";
         String messagesendUrl="http://192.168.43.247/medicheck/medicheckDB/mesajgonder.php";
@@ -59,8 +67,10 @@ public class BackgroundWorker_class extends AsyncTask<String,String ,String > {
         String listAppointmetUrl="http://192.168.43.247/medicheck/medicheckDB/listAppointment.php";
         String registerMedicUrl="http://192.168.43.247/medicheck/medicheckDB/registerMedic.php";
         String listMedicUrl="http://192.168.43.247/medicheck/medicheckDB/listMedic.php";
-        String hastaDoktorKayitUrl="http://192.168.43.247/medicheck/medicheckDB/doktrHastaKayit.php";*/
-        String registeredUrl="http://169.254.153.254/medicheck/medicheckDB/registeredHasta.php";
+        String hastaDoktorKayitUrl="http://192.168.43.247/medicheck/medicheckDB/doktrHastaKayit.php";
+
+        //neu
+       /* String registeredUrl="http://169.254.153.254/medicheck/medicheckDB/registeredHasta.php";
         String loginUrl="http://169.254.153.254/medicheck/medicheckDB/login.php";
         String getdoctorsnUrl="http://169.254.153.254/medicheck/medicheckDB/getdoctors.php";
         String messagesendUrl="http://169.254.153.254/medicheck/medicheckDB/mesajgonder.php";
@@ -72,7 +82,25 @@ public class BackgroundWorker_class extends AsyncTask<String,String ,String > {
         String listAppointmetUrl="http://169.254.153.254/medicheck/medicheckDB/listAppointment.php";
         String registerMedicUrl="http://169.254.153.254/medicheck/medicheckDB/registerMedic.php";
         String listMedicUrl="http://169.254.153.254/medicheck/medicheckDB/listMedic.php";
-        String hastaDoktorKayitUrl="http://169.254.153.254/medicheck/medicheckDB/doktrHastaKayit.php";
+        String hastaDoktorKayitUrl="http://169.254.153.254/medicheck/medicheckDB/doktrHastaKayit.php";*/
+       /*
+       * neu ubuntu
+       * ip:10.31.8.145*/
+       /*
+        String registeredUrl="http://10.31.8.145/medicheck/medicheckDB/registeredHasta.php";
+        String loginUrl="http://10.31.8.145/medicheck/medicheckDB/login.php";
+        String getdoctorsnUrl="http://10.31.8.145/medicheck/medicheckDB/getdoctors.php";
+        String messagesendUrl="http://10.31.8.145/medicheck/medicheckDB/mesajgonder.php";
+        String olcumkaydetUrl="http://10.31.8.145/medicheck/medicheckDB/olcumkaydet.php";
+        String getolcumlerUrl="http://10.31.8.145/medicheck/medicheckDB/getolcumler.php";
+        String getkayitlidoktorlarUrl="http://10.31.8.145/medicheck/medicheckDB/getdoktorhasta.php";
+        String getpatientsDoctors="http://10.31.8.145/medicheck/medicheckDB/patientsDoctors.php";
+        String setAppointmetUrl="http://10.31.8.145/medicheck/medicheckDB/setAppointmet.php";
+        String listAppointmetUrl="http://10.31.8.145/medicheck/medicheckDB/listAppointment.php";
+        String registerMedicUrl="http://10.31.8.145/medicheck/medicheckDB/registerMedic.php";
+        String listMedicUrl="http://10.31.8.145/medicheck/medicheckDB/listMedic.php";
+        String hastaDoktorKayitUrl="http://10.31.8.145/medicheck/medicheckDB/doktrHastaKayit.php";
+*/
         if(gcm==null) {
             gcm = GoogleCloudMessaging.getInstance(context);//GoogleCloudMessaging objesi oluşturduk
         }
@@ -541,6 +569,41 @@ public class BackgroundWorker_class extends AsyncTask<String,String ,String > {
                 OutputStream outputStream = httpURLConnection.getOutputStream();
 
                 BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream,"UTF-8"));
+                String postData = URLEncoder.encode("doktorId","UTF-8")+"="+URLEncoder.encode(userId,"UTF-8")+"&"
+                        +URLEncoder.encode("hasta_id","UTF-8")+"="+URLEncoder.encode(doktorId,"UTF-8");
+                bufferedWriter.write(postData);
+                bufferedWriter.flush();
+                bufferedWriter.close();
+                outputStream.close();
+                InputStream inputStream = httpURLConnection.getInputStream();
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream,"iso-8859-1"));
+                String result="";
+                String line="";
+                while ((line = bufferedReader.readLine())!=null){
+                    result+=line;
+                }
+                bufferedReader.close();
+                inputStream.close();
+                httpURLConnection.disconnect();
+                return result;
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }/*else if(type.equals("register_doctor_for_patient")){
+            try {
+                String userId=params[1];
+                String doktorId=params[2];
+
+                URL url = new URL(registerDoctorForPatient);
+                HttpURLConnection httpURLConnection = (HttpURLConnection)url.openConnection();
+                httpURLConnection.setRequestMethod("POST");
+                httpURLConnection.setDoOutput(true);
+                httpURLConnection.setDoInput(true);
+                OutputStream outputStream = httpURLConnection.getOutputStream();
+
+                BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream,"UTF-8"));
                 String postData = URLEncoder.encode("hasta_id","UTF-8")+"="+URLEncoder.encode(userId,"UTF-8")+"&"
                         +URLEncoder.encode("doktorId","UTF-8")+"="+URLEncoder.encode(doktorId,"UTF-8");
                 bufferedWriter.write(postData);
@@ -563,7 +626,7 @@ public class BackgroundWorker_class extends AsyncTask<String,String ,String > {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        }
+        }*/
 
         return null;
     }

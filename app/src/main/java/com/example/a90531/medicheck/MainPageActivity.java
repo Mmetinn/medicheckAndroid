@@ -98,6 +98,11 @@ public class MainPageActivity extends AppCompatActivity implements AsyncResponse
                         startActivity(intent6);
                         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                         break;
+                    case R.id.select_doctor:
+                        Intent intent7 = new Intent(MainPageActivity.this,selectDoctorActivity.class);
+                        startActivity(intent7);
+                        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                        break;
                 }
                 //drawerLayout.closeDrawer();
                 return true;
@@ -108,6 +113,8 @@ public class MainPageActivity extends AppCompatActivity implements AsyncResponse
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.message_menu, menu);
+        getMenuInflater().inflate(R.menu.right_top_menu, menu);
+
         return true;
 
     }
@@ -117,10 +124,8 @@ public class MainPageActivity extends AppCompatActivity implements AsyncResponse
 
         switch (item.getItemId()) {
 
-            case R.id.action_my_contacts:
-                Intent i = new Intent(MainPageActivity.this,MessagesMainActivity.class);
-                startActivity(i);
-                return true;
+            case R.id.message_activity:
+                startActivity(new Intent(MainPageActivity.this,MessagesMainActivity.class));
 
         }
         return super.onOptionsItemSelected(item);
@@ -136,219 +141,221 @@ public class MainPageActivity extends AppCompatActivity implements AsyncResponse
         ArrayList<String> harcananKaloriArray = new ArrayList<>();
         ArrayList<String> kolestrolArray = new ArrayList<>();
         ArrayList<String> vucutSicakligiArray = new ArrayList<>();
-        while (sayac<olcumlerList.size()) {
-            String dizi[] = olcumlerList.get(sayac).split("--");
-            switch (dizi[3]) {
-                case "1":
-                    //agirlik
-                    agirlikArray.add(dizi[1]);
-                    break;
-                case "2":
-                    //kansekeri
-                    kanSekerArray.add(dizi[1]);
-                    break;
-                case "3":
-                    //kanbasinci
-                    kanBasinciArray.add(dizi[1]);
-                    break;
-                case "4":
-                    //adim say
-                    adimSayArray.add(dizi[1]);
-                    break;
-                case "5":
-                    //nabiz
-                    nabizArray.add(dizi[1]);
-                    break;
-                case "6":
-                    //tuketilen kalori
-                    tuketilenKaloriArray.add(dizi[1]);
-                    break;
-                case "7":
-                    //harcanan kalori
-                    harcananKaloriArray.add(dizi[1]);
-                    break;
-                case "8":
-                    //kolestrol
-                    kolestrolArray.add(dizi[1]);
-                    break;
-                case "9":
-                    //vucut sicakligi
-                    vucutSicakligiArray.add(dizi[1]);
-                    break;
+        if(olcumlerList.size()!=1) {
+            while (sayac < olcumlerList.size()) {
+                String dizi[] = olcumlerList.get(sayac).split("--");
+                switch (dizi[3]) {
+                    case "1":
+                        //agirlik
+                        agirlikArray.add(dizi[1]);
+                        break;
+                    case "2":
+                        //kansekeri
+                        kanSekerArray.add(dizi[1]);
+                        break;
+                    case "3":
+                        //kanbasinci
+                        kanBasinciArray.add(dizi[1]);
+                        break;
+                    case "4":
+                        //adim say
+                        adimSayArray.add(dizi[1]);
+                        break;
+                    case "5":
+                        //nabiz
+                        nabizArray.add(dizi[1]);
+                        break;
+                    case "6":
+                        //tuketilen kalori
+                        tuketilenKaloriArray.add(dizi[1]);
+                        break;
+                    case "7":
+                        //harcanan kalori
+                        harcananKaloriArray.add(dizi[1]);
+                        break;
+                    case "8":
+                        //kolestrol
+                        kolestrolArray.add(dizi[1]);
+                        break;
+                    case "9":
+                        //vucut sicakligi
+                        vucutSicakligiArray.add(dizi[1]);
+                        break;
+                }
+                sayac++;
             }
-            sayac++;
         }
-                    //agirlik
-                    if(!agirlikArray.isEmpty()){
-                        final SeriesItem seriesItem_1_1 = new SeriesItem.Builder(Color.parseColor("#FFE2E2E2"))
-                                .setRange(0, 50, 0)
-                                .build();
+         //agirlik
+        if(!agirlikArray.isEmpty()){
+            final SeriesItem seriesItem_1_1 = new SeriesItem.Builder(Color.parseColor("#FFE2E2E2"))
+                    .setRange(0, 50, 0)
+                    .build();
 
-                        int backIndex_1_1 = agirlikDc.addSeries(seriesItem_1_1);
-                        final SeriesItem seriesItem2_1_1 = new SeriesItem.Builder(Color.parseColor("#FFFF8800"))
-                                .setRange(0, 250, 0)
-                                .build();
-                        int series1Index_1_1 = agirlikDc.addSeries(seriesItem2_1_1);
+            int backIndex_1_1 = agirlikDc.addSeries(seriesItem_1_1);
+            final SeriesItem seriesItem2_1_1 = new SeriesItem.Builder(Color.parseColor("#FFFF8800"))
+                    .setRange(0, 250, 0)
+                    .build();
+            int series1Index_1_1 = agirlikDc.addSeries(seriesItem2_1_1);
 
-                        agirlikDc.addEvent(new DecoEvent.Builder(50)
-                                .setIndex(backIndex_1_1)
-                                .build());
-                        agirlikDc.addEvent(new DecoEvent.Builder(Integer.parseInt(agirlikArray.get(agirlikArray.size()-1)))
-                                .setIndex(series1Index_1_1)
-                                .setDelay(5000)
-                                .build());
-                    }
-                    //kansekeri
-                    if(!kanSekerArray.isEmpty()){
-                        final SeriesItem seriesItem_2 = new SeriesItem.Builder(Color.parseColor("#FFE2E2E2"))
-                                .setRange(0, 50, 0)
-                                .build();
-                        int backIndex_2 = kanSekeriDc.addSeries(seriesItem_2);
-                        final SeriesItem seriesItem2_2 = new SeriesItem.Builder(Color.parseColor("#FFFF8800"))
-                                .setRange(0, 250, 0)
-                                .build();
-                        int series1Index_2 = kanSekeriDc.addSeries(seriesItem2_2);
-                        kanSekeriDc.addEvent(new DecoEvent.Builder(50)
-                                .setIndex(backIndex_2)
-                                .build());
-                        kanSekeriDc.addEvent(new DecoEvent.Builder(Integer.parseInt(kanSekerArray.get(kanSekerArray.size()-1)))
-                                .setIndex(series1Index_2)
-                                .setDelay(5000)
-                                .build());
-                    }
+            agirlikDc.addEvent(new DecoEvent.Builder(50)
+                    .setIndex(backIndex_1_1)
+                    .build());
+            agirlikDc.addEvent(new DecoEvent.Builder(Integer.parseInt(agirlikArray.get(agirlikArray.size()-1)))
+                    .setIndex(series1Index_1_1)
+                    .setDelay(5000)
+                    .build());
+        }
+        //kansekeri
+        if(!kanSekerArray.isEmpty()){
+            final SeriesItem seriesItem_2 = new SeriesItem.Builder(Color.parseColor("#FFE2E2E2"))
+                    .setRange(0, 50, 0)
+                    .build();
+            int backIndex_2 = kanSekeriDc.addSeries(seriesItem_2);
+            final SeriesItem seriesItem2_2 = new SeriesItem.Builder(Color.parseColor("#FFFF8800"))
+                    .setRange(0, 250, 0)
+                    .build();
+            int series1Index_2 = kanSekeriDc.addSeries(seriesItem2_2);
+            kanSekeriDc.addEvent(new DecoEvent.Builder(50)
+                    .setIndex(backIndex_2)
+                    .build());
+            kanSekeriDc.addEvent(new DecoEvent.Builder(Integer.parseInt(kanSekerArray.get(kanSekerArray.size()-1)))
+                    .setIndex(series1Index_2)
+                    .setDelay(5000)
+                    .build());
+        }
 
-                    //kanbasinci
-                    if(!kanBasinciArray.isEmpty()){
-                        final SeriesItem seriesItem_2 = new SeriesItem.Builder(Color.parseColor("#FFE2E2E2"))
-                                .setRange(0, 50, 0)
-                                .build();
-                        int backIndex_2 = kanBasinciDc.addSeries(seriesItem_2);
-                        final SeriesItem seriesItem2_2 = new SeriesItem.Builder(Color.parseColor("#FFFF8800"))
-                                .setRange(0, 250, 0)
-                                .build();
-                        int series1Index_2 = kanBasinciDc.addSeries(seriesItem2_2);
-                        kanBasinciDc.addEvent(new DecoEvent.Builder(50)
-                                .setIndex(backIndex_2)
-                                .build());
-                        kanBasinciDc.addEvent(new DecoEvent.Builder(Integer.parseInt(kanBasinciArray.get(kanBasinciArray.size()-1)))
-                                .setIndex(series1Index_2)
-                                .setDelay(5000)
-                                .build());
-                    }
+        //kanbasinci
+        if(!kanBasinciArray.isEmpty()){
+            final SeriesItem seriesItem_2 = new SeriesItem.Builder(Color.parseColor("#FFE2E2E2"))
+                    .setRange(0, 50, 0)
+                    .build();
+            int backIndex_2 = kanBasinciDc.addSeries(seriesItem_2);
+            final SeriesItem seriesItem2_2 = new SeriesItem.Builder(Color.parseColor("#FFFF8800"))
+                    .setRange(0, 250, 0)
+                    .build();
+            int series1Index_2 = kanBasinciDc.addSeries(seriesItem2_2);
+            kanBasinciDc.addEvent(new DecoEvent.Builder(50)
+                    .setIndex(backIndex_2)
+                    .build());
+            kanBasinciDc.addEvent(new DecoEvent.Builder(Integer.parseInt(kanBasinciArray.get(kanBasinciArray.size()-1)))
+                    .setIndex(series1Index_2)
+                    .setDelay(5000)
+                    .build());
+        }
 
-                    //adim say
-                    if(!adimSayArray.isEmpty()){
-                        final SeriesItem seriesItem_2 = new SeriesItem.Builder(Color.parseColor("#FFE2E2E2"))
-                                .setRange(0, 50, 0)
-                                .build();
-                        int backIndex_2 = adimDc.addSeries(seriesItem_2);
-                        final SeriesItem seriesItem2_2 = new SeriesItem.Builder(Color.parseColor("#FFFF8800"))
-                                .setRange(0, 250, 0)
-                                .build();
-                        int series1Index_2 = adimDc.addSeries(seriesItem2_2);
-                        adimDc.addEvent(new DecoEvent.Builder(50)
-                                .setIndex(backIndex_2)
-                                .build());
-                        adimDc.addEvent(new DecoEvent.Builder(Integer.parseInt(adimSayArray.get(adimSayArray.size()-1)))
-                                .setIndex(series1Index_2)
-                                .setDelay(5000)
-                                .build());
-                    }
+        //adim say
+        if(!adimSayArray.isEmpty()){
+            final SeriesItem seriesItem_2 = new SeriesItem.Builder(Color.parseColor("#FFE2E2E2"))
+                    .setRange(0, 50, 0)
+                    .build();
+            int backIndex_2 = adimDc.addSeries(seriesItem_2);
+            final SeriesItem seriesItem2_2 = new SeriesItem.Builder(Color.parseColor("#FFFF8800"))
+                    .setRange(0, 250, 0)
+                    .build();
+            int series1Index_2 = adimDc.addSeries(seriesItem2_2);
+            adimDc.addEvent(new DecoEvent.Builder(50)
+                    .setIndex(backIndex_2)
+                    .build());
+            adimDc.addEvent(new DecoEvent.Builder(Integer.parseInt(adimSayArray.get(adimSayArray.size()-1)))
+                    .setIndex(series1Index_2)
+                    .setDelay(5000)
+                    .build());
+        }
 
-                    //nabiz
-                    if(!nabizArray.isEmpty()){
-                        final SeriesItem seriesItem_2 = new SeriesItem.Builder(Color.parseColor("#FFE2E2E2"))
-                                .setRange(0, 50, 0)
-                                .build();
-                        int backIndex_2 = nabizDc.addSeries(seriesItem_2);
-                        final SeriesItem seriesItem2_2 = new SeriesItem.Builder(Color.parseColor("#FFFF8800"))
-                                .setRange(0, 250, 0)
-                                .build();
-                        int series1Index_2 = nabizDc.addSeries(seriesItem2_2);
-                        nabizDc.addEvent(new DecoEvent.Builder(50)
-                                .setIndex(backIndex_2)
-                                .build());
-                        nabizDc.addEvent(new DecoEvent.Builder(Integer.parseInt(nabizArray.get(nabizArray.size()-1)))
-                                .setIndex(series1Index_2)
-                                .setDelay(5000)
-                                .build());
-                    }
+        //nabiz
+        if(!nabizArray.isEmpty()){
+            final SeriesItem seriesItem_2 = new SeriesItem.Builder(Color.parseColor("#FFE2E2E2"))
+                    .setRange(0, 50, 0)
+                    .build();
+            int backIndex_2 = nabizDc.addSeries(seriesItem_2);
+            final SeriesItem seriesItem2_2 = new SeriesItem.Builder(Color.parseColor("#FFFF8800"))
+                    .setRange(0, 250, 0)
+                    .build();
+            int series1Index_2 = nabizDc.addSeries(seriesItem2_2);
+            nabizDc.addEvent(new DecoEvent.Builder(50)
+                    .setIndex(backIndex_2)
+                    .build());
+            nabizDc.addEvent(new DecoEvent.Builder(Integer.parseInt(nabizArray.get(nabizArray.size()-1)))
+                    .setIndex(series1Index_2)
+                    .setDelay(5000)
+                    .build());
+        }
 
-                    //tuketilen kalori
-                    if(!tuketilenKaloriArray.isEmpty()){
-                        final SeriesItem seriesItem_2 = new SeriesItem.Builder(Color.parseColor("#FFE2E2E2"))
-                                .setRange(0, 50, 0)
-                                .build();
-                        int backIndex_2 = alinanKaloriDc.addSeries(seriesItem_2);
-                        final SeriesItem seriesItem2_2 = new SeriesItem.Builder(Color.parseColor("#FFFF8800"))
-                                .setRange(0, 250, 0)
-                                .build();
-                        int series1Index_2 = alinanKaloriDc.addSeries(seriesItem2_2);
-                        alinanKaloriDc.addEvent(new DecoEvent.Builder(50)
-                                .setIndex(backIndex_2)
-                                .build());
-                        alinanKaloriDc.addEvent(new DecoEvent.Builder(Integer.parseInt(tuketilenKaloriArray.get(tuketilenKaloriArray.size()-1)))
-                                .setIndex(series1Index_2)
-                                .setDelay(5000)
-                                .build());
-                    }
+        //tuketilen kalori
+        if(!tuketilenKaloriArray.isEmpty()){
+            final SeriesItem seriesItem_2 = new SeriesItem.Builder(Color.parseColor("#FFE2E2E2"))
+                    .setRange(0, 50, 0)
+                    .build();
+            int backIndex_2 = alinanKaloriDc.addSeries(seriesItem_2);
+            final SeriesItem seriesItem2_2 = new SeriesItem.Builder(Color.parseColor("#FFFF8800"))
+                    .setRange(0, 250, 0)
+                    .build();
+            int series1Index_2 = alinanKaloriDc.addSeries(seriesItem2_2);
+            alinanKaloriDc.addEvent(new DecoEvent.Builder(50)
+                    .setIndex(backIndex_2)
+                    .build());
+            alinanKaloriDc.addEvent(new DecoEvent.Builder(Integer.parseInt(tuketilenKaloriArray.get(tuketilenKaloriArray.size()-1)))
+                    .setIndex(series1Index_2)
+                    .setDelay(5000)
+                    .build());
+        }
 
-                    //harcanan kalori
-                    if(!harcananKaloriArray.isEmpty()){
-                        final SeriesItem seriesItem_2 = new SeriesItem.Builder(Color.parseColor("#FFE2E2E2"))
-                                .setRange(0, 50, 0)
-                                .build();
-                        int backIndex_2 = harcananKaloriDc.addSeries(seriesItem_2);
-                        final SeriesItem seriesItem2_2 = new SeriesItem.Builder(Color.parseColor("#FFFF8800"))
-                                .setRange(0, 250, 0)
-                                .build();
-                        int series1Index_2 = harcananKaloriDc.addSeries(seriesItem2_2);
-                        harcananKaloriDc.addEvent(new DecoEvent.Builder(50)
-                                .setIndex(backIndex_2)
-                                .build());
-                        harcananKaloriDc.addEvent(new DecoEvent.Builder(Integer.parseInt(harcananKaloriArray.get(harcananKaloriArray.size()-1)))
-                                .setIndex(series1Index_2)
-                                .setDelay(5000)
-                                .build());
-                    }
+        //harcanan kalori
+        if(!harcananKaloriArray.isEmpty()){
+            final SeriesItem seriesItem_2 = new SeriesItem.Builder(Color.parseColor("#FFE2E2E2"))
+                    .setRange(0, 50, 0)
+                    .build();
+            int backIndex_2 = harcananKaloriDc.addSeries(seriesItem_2);
+            final SeriesItem seriesItem2_2 = new SeriesItem.Builder(Color.parseColor("#FFFF8800"))
+                    .setRange(0, 250, 0)
+                    .build();
+            int series1Index_2 = harcananKaloriDc.addSeries(seriesItem2_2);
+            harcananKaloriDc.addEvent(new DecoEvent.Builder(50)
+                    .setIndex(backIndex_2)
+                    .build());
+            harcananKaloriDc.addEvent(new DecoEvent.Builder(Integer.parseInt(harcananKaloriArray.get(harcananKaloriArray.size()-1)))
+                    .setIndex(series1Index_2)
+                    .setDelay(5000)
+                    .build());
+        }
 
-                    //kolestrol
-                    if(!kolestrolArray.isEmpty()){
-                        final SeriesItem seriesItem_2 = new SeriesItem.Builder(Color.parseColor("#FFE2E2E2"))
-                                .setRange(0, 50, 0)
-                                .build();
-                        int backIndex_2 = kolestrolDc.addSeries(seriesItem_2);
-                        final SeriesItem seriesItem2_2 = new SeriesItem.Builder(Color.parseColor("#FFFF8800"))
-                                .setRange(0, 250, 0)
-                                .build();
-                        int series1Index_2 = kolestrolDc.addSeries(seriesItem2_2);
-                        kolestrolDc.addEvent(new DecoEvent.Builder(50)
-                                .setIndex(backIndex_2)
-                                .build());
-                        kolestrolDc.addEvent(new DecoEvent.Builder(Integer.parseInt(kolestrolArray.get(kolestrolArray.size()-1)))
-                                .setIndex(series1Index_2)
-                                .setDelay(5000)
-                                .build());
-                    }
+        //kolestrol
+        if(!kolestrolArray.isEmpty()){
+            final SeriesItem seriesItem_2 = new SeriesItem.Builder(Color.parseColor("#FFE2E2E2"))
+                    .setRange(0, 50, 0)
+                    .build();
+            int backIndex_2 = kolestrolDc.addSeries(seriesItem_2);
+            final SeriesItem seriesItem2_2 = new SeriesItem.Builder(Color.parseColor("#FFFF8800"))
+                    .setRange(0, 250, 0)
+                    .build();
+            int series1Index_2 = kolestrolDc.addSeries(seriesItem2_2);
+            kolestrolDc.addEvent(new DecoEvent.Builder(50)
+                    .setIndex(backIndex_2)
+                    .build());
+            kolestrolDc.addEvent(new DecoEvent.Builder(Integer.parseInt(kolestrolArray.get(kolestrolArray.size()-1)))
+                    .setIndex(series1Index_2)
+                    .setDelay(5000)
+                    .build());
+        }
 
-                    //vucut sicakligi
-                    if(!vucutSicakligiArray.isEmpty()){
-                        final SeriesItem seriesItem_2 = new SeriesItem.Builder(Color.parseColor("#FFE2E2E2"))
-                                .setRange(0, 50, 0)
-                                .build();
-                        int backIndex_2 = vucutSicakligiDc.addSeries(seriesItem_2);
-                        final SeriesItem seriesItem2_2 = new SeriesItem.Builder(Color.parseColor("#FFFF8800"))
-                                .setRange(0, 250, 0)
-                                .build();
-                        int series1Index_2 = vucutSicakligiDc.addSeries(seriesItem2_2);
-                        vucutSicakligiDc.addEvent(new DecoEvent.Builder(50)
-                                .setIndex(backIndex_2)
-                                .build());
-                        vucutSicakligiDc.addEvent(new DecoEvent.Builder(Integer.parseInt(vucutSicakligiArray.get(vucutSicakligiArray.size()-1)))
-                                .setIndex(series1Index_2)
-                                .setDelay(5000)
-                                .build());
-                    }
+        //vucut sicakligi
+        if(!vucutSicakligiArray.isEmpty()){
+            final SeriesItem seriesItem_2 = new SeriesItem.Builder(Color.parseColor("#FFE2E2E2"))
+                    .setRange(0, 50, 0)
+                    .build();
+            int backIndex_2 = vucutSicakligiDc.addSeries(seriesItem_2);
+            final SeriesItem seriesItem2_2 = new SeriesItem.Builder(Color.parseColor("#FFFF8800"))
+                    .setRange(0, 250, 0)
+                    .build();
+            int series1Index_2 = vucutSicakligiDc.addSeries(seriesItem2_2);
+            vucutSicakligiDc.addEvent(new DecoEvent.Builder(50)
+                    .setIndex(backIndex_2)
+                    .build());
+            vucutSicakligiDc.addEvent(new DecoEvent.Builder(Integer.parseInt(vucutSicakligiArray.get(vucutSicakligiArray.size()-1)))
+                    .setIndex(series1Index_2)
+                    .setDelay(5000)
+                    .build());
+        }
 
 
 
@@ -539,6 +546,7 @@ public class MainPageActivity extends AppCompatActivity implements AsyncResponse
             olcumlerList.add(array[a]);
             a++;
         }
-        decoViewCreate();
+        //if(array.length>1)
+            decoViewCreate();
     }
 }

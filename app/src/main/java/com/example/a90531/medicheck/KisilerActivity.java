@@ -43,7 +43,7 @@ public class KisilerActivity extends AppCompatActivity implements AsyncResponse{
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent i = new Intent(KisilerActivity.this,MessageActivity.class);
+                Intent i = new Intent(KisilerActivity.this,ChatBoxActivity.class);
                 i.putExtra("id",idler.get(position));
                 startActivity(i);
             }
@@ -90,11 +90,11 @@ public class KisilerActivity extends AppCompatActivity implements AsyncResponse{
 
     @Override
     public void processFinish(String output) {
-        String dizi[]=output.trim().split("--");
+        String dizi[]=output.trim().split("_");
         int sayac=0;
         String []a = new String[100];
-        while (sayac<dizi.length){
-            a=dizi[sayac].trim().split("-");
+        while (sayac<dizi.length-1){
+            a=dizi[sayac].trim().split("--");
             idler.add(a[0]);
             doktorlar.add(a[1]);
             sayac++;

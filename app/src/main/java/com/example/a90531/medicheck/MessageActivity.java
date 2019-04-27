@@ -2,6 +2,7 @@ package com.example.a90531.medicheck;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,12 +16,22 @@ import android.widget.Toast;
 
 import com.google.android.gms.gcm.GoogleCloudMessaging;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.net.Socket;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class MessageActivity extends AppCompatActivity  implements AsyncResponse
 {
+    private Socket skt=null;
+    JSONObject item=new JSONObject();
+    static ObjectOutputStream yazıcı;
+    static ObjectInputStream okuyucu;
     String gonderenId,alanId;
     final String PROJECT_ID = "83042319627";
     String userId= "";
@@ -53,9 +64,25 @@ public class MessageActivity extends AppCompatActivity  implements AsyncResponse
             }
         }
 
+        try {
+            item.put("dur","dur");
+            item.put("ileri","ileri");
+            item.put("geri","geri");
+            item.put("sag","sag");
+            item.put("sol","sol");
+            item.put("kimlik","kimlik");
+            item.put("vites","vites");
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         userId=sharedPreferences.getString("userId","null");
         Toast.makeText(getApplicationContext(),alanId+" hastanın idsi ise "+userId,Toast.LENGTH_SHORT).show();
+        asyn as = new asyn();
+        as.execute();
     }
     public void sendClicked(View view){
         mesaj=etMessage.getText().toString();
@@ -96,4 +123,35 @@ public class MessageActivity extends AppCompatActivity  implements AsyncResponse
     public void processFinish(String output) {
 
     }
+    class asyn extends AsyncTask<Void,Void,String> {
+
+        @Override
+        protected String doInBackground(Void... voids) {
+
+            try {
+                skt = new Socket("192.168.0.10",3000);
+                yazıcı = new ObjectOutputStream(skt.getOutputStream());
+                okuyucu = new ObjectInputStream(skt.getInputStream());
+                yazıcı.writeObject(item.toString());
+                yazıcı.flush();
+                //gelenJSON = (String)okuyucu.readObject();
+                skt.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return "aaa";
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            JSONObject jobj= null;
+            try {
+                jobj = new JSONObject(s);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            Toast.makeText(getApplicationContext(),"obje::"+jobj,Toast.LENGTH_SHORT).show();
+        }
+    }
 }
+
