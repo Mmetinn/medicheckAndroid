@@ -192,7 +192,8 @@ public class LoginActivity extends AppCompatActivity implements AsyncResponse  {
 
     @Override
     public void processFinish(String output) {
-        if(!output.trim().equals("-1")) {
+        String a=output.trim();
+        if(!a.equals("-1")) {
             SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
             SharedPreferences.Editor editor = sharedPreferences.edit(); //SharedPreferences'a kayıt eklemek için editor oluşturuyoruz
             editor.putString("userId",output.trim());

@@ -29,79 +29,26 @@ public class BackgroundWorker_class extends AsyncTask<String,String ,String > {
     public BackgroundWorker_class(Context context) {
         this.context = context;
     }
-
+    final String ip ="http://192.168.43.120/medicheck/medicheckDB/";
 
     @Override
     protected String doInBackground(String... params) {
         String type=params[0];
 
-        /*
-        *
-        *
-        * //kingsuit
-        String registeredUrl="http://192.168.0.10/medicheck/medicheckDB/registeredHasta.php";
-        String loginUrl="http://192.168.0.10/medicheck/medicheckDB/login.php";
-        String getdoctorsnUrl="http://192.168.0.10/medicheck/medicheckDB/getdoctors.php";
-        String messagesendUrl="http://192.168.0.10/medicheck/medicheckDB/mesajgonder.php";
-        String olcumkaydetUrl="http://192.168.0.10/medicheck/medicheckDB/olcumkaydet.php";
-        String getolcumlerUrl="http://192.168.0.10/medicheck/medicheckDB/getolcumler.php";
-        String getkayitlidoktorlarUrl="http://192.168.0.10/medicheck/medicheckDB/getdoktorhasta.php";
-        String getpatientsDoctors="http://192.168.0.10/medicheck/medicheckDB/patientsDoctors.php";
-        String setAppointmetUrl="http://192.168.0.10/medicheck/medicheckDB/setAppointmet.php";
-        String listAppointmetUrl="http://192.168.0.10/medicheck/medicheckDB/listAppointment.php";
-        String registerMedicUrl="http://192.168.0.10/medicheck/medicheckDB/registerMedic.php";
-        String listMedicUrl="http://192.168.0.10/medicheck/medicheckDB/listMedic.php";
-        String hastaDoktorKayitUrl="http://192.168.0.10/medicheck/medicheckDB/doktrHastaKayit.php";
-        */
-
-        //meto
-        String registeredUrl="http://192.168.43.247/medicheck/medicheckDB/registeredHasta.php";
-        String loginUrl="http://192.168.43.247/medicheck/medicheckDB/login.php";
-        String getdoctorsnUrl="http://192.168.43.247/medicheck/medicheckDB/getdoctors.php";
-        String messagesendUrl="http://192.168.43.247/medicheck/medicheckDB/mesajgonder.php";
-        String olcumkaydetUrl="http://192.168.43.247/medicheck/medicheckDB/olcumkaydet.php";
-        String getolcumlerUrl="http://192.168.43.247/medicheck/medicheckDB/getolcumler.php";
-        String getkayitlidoktorlarUrl="http://192.168.43.247/medicheck/medicheckDB/getdoktorhasta.php";
-        String getpatientsDoctors="http://192.168.43.247/medicheck/medicheckDB/patientsDoctors.php";
-        String setAppointmetUrl="http://192.168.43.247/medicheck/medicheckDB/setAppointmet.php";
-        String listAppointmetUrl="http://192.168.43.247/medicheck/medicheckDB/listAppointment.php";
-        String registerMedicUrl="http://192.168.43.247/medicheck/medicheckDB/registerMedic.php";
-        String listMedicUrl="http://192.168.43.247/medicheck/medicheckDB/listMedic.php";
-        String hastaDoktorKayitUrl="http://192.168.43.247/medicheck/medicheckDB/doktrHastaKayit.php";
-
-        //neu
-       /* String registeredUrl="http://169.254.153.254/medicheck/medicheckDB/registeredHasta.php";
-        String loginUrl="http://169.254.153.254/medicheck/medicheckDB/login.php";
-        String getdoctorsnUrl="http://169.254.153.254/medicheck/medicheckDB/getdoctors.php";
-        String messagesendUrl="http://169.254.153.254/medicheck/medicheckDB/mesajgonder.php";
-        String olcumkaydetUrl="http://169.254.153.254/medicheck/medicheckDB/olcumkaydet.php";
-        String getolcumlerUrl="http://169.254.153.254/medicheck/medicheckDB/getolcumler.php";
-        String getkayitlidoktorlarUrl="http://169.254.153.254/medicheck/medicheckDB/getdoktorhasta.php";
-        String getpatientsDoctors="http://169.254.153.254/medicheck/medicheckDB/patientsDoctors.php";
-        String setAppointmetUrl="http://169.254.153.254/medicheck/medicheckDB/setAppointmet.php";
-        String listAppointmetUrl="http://169.254.153.254/medicheck/medicheckDB/listAppointment.php";
-        String registerMedicUrl="http://169.254.153.254/medicheck/medicheckDB/registerMedic.php";
-        String listMedicUrl="http://169.254.153.254/medicheck/medicheckDB/listMedic.php";
-        String hastaDoktorKayitUrl="http://169.254.153.254/medicheck/medicheckDB/doktrHastaKayit.php";*/
-       /*
-       * neu ubuntu
-       * ip:10.31.8.145*/
-       /*
-        String registeredUrl="http://10.31.8.145/medicheck/medicheckDB/registeredHasta.php";
-        String loginUrl="http://10.31.8.145/medicheck/medicheckDB/login.php";
-        String getdoctorsnUrl="http://10.31.8.145/medicheck/medicheckDB/getdoctors.php";
-        String messagesendUrl="http://10.31.8.145/medicheck/medicheckDB/mesajgonder.php";
-        String olcumkaydetUrl="http://10.31.8.145/medicheck/medicheckDB/olcumkaydet.php";
-        String getolcumlerUrl="http://10.31.8.145/medicheck/medicheckDB/getolcumler.php";
-        String getkayitlidoktorlarUrl="http://10.31.8.145/medicheck/medicheckDB/getdoktorhasta.php";
-        String getpatientsDoctors="http://10.31.8.145/medicheck/medicheckDB/patientsDoctors.php";
-        String setAppointmetUrl="http://10.31.8.145/medicheck/medicheckDB/setAppointmet.php";
-        String listAppointmetUrl="http://10.31.8.145/medicheck/medicheckDB/listAppointment.php";
-        String registerMedicUrl="http://10.31.8.145/medicheck/medicheckDB/registerMedic.php";
-        String listMedicUrl="http://10.31.8.145/medicheck/medicheckDB/listMedic.php";
-        String hastaDoktorKayitUrl="http://10.31.8.145/medicheck/medicheckDB/doktrHastaKayit.php";
-*/
-        if(gcm==null) {
+        String registeredUrl=ip+"registeredHasta.php";
+        String loginUrl=ip+"login.php";
+        String getdoctorsnUrl=ip+"getdoctors.php";
+        String messagesendUrl=ip+"mesajgonder.php";
+        String olcumkaydetUrl=ip+"olcumkaydet.php";
+        String getolcumlerUrl=ip+"getolcumler.php";
+        String getkayitlidoktorlarUrl=ip+"getdoktorhasta.php";
+        String getpatientsDoctors=ip+"patientsDoctors.php";
+        String setAppointmetUrl=ip+"setAppointmet.php";
+        String listAppointmetUrl=ip+"listAppointment.php";
+        String registerMedicUrl=ip+"registerMedic.php";
+        String listMedicUrl=ip+"listMedic.php";
+        String hastaDoktorKayitUrl=ip+"doktrHastaKayit.php";
+  if(gcm==null) {
             gcm = GoogleCloudMessaging.getInstance(context);//GoogleCloudMessaging objesi oluşturduk
         }
         String gcmString = "";

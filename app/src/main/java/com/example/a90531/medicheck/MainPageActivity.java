@@ -42,7 +42,7 @@ public class MainPageActivity extends AppCompatActivity implements AsyncResponse
         nv=(NavigationView)findViewById(R.id.naviMain);
         nv.setItemIconTintList(null);
         nv.bringToFront();
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         agirlikDc=(DecoView)findViewById(R.id.agirlikDecode);
         kanSekeriDc=(DecoView)findViewById(R.id.kanSekeriDecode);
         adimDc=(DecoView)findViewById(R.id.adimDecode);
@@ -110,16 +110,17 @@ public class MainPageActivity extends AppCompatActivity implements AsyncResponse
         });
     }
 
-    public boolean onCreateOptionsMenu(Menu menu) {
+    //right_top_menu mesajlaşma kısmına bağlanıyor komisyoniçin kapadım
+   /* public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.message_menu, menu);
         getMenuInflater().inflate(R.menu.right_top_menu, menu);
 
         return true;
 
-    }
+    }*/
 
-    @Override
+   /* @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId()) {
@@ -129,7 +130,7 @@ public class MainPageActivity extends AppCompatActivity implements AsyncResponse
 
         }
         return super.onOptionsItemSelected(item);
-    }
+    }*/
     void decoViewCreate(){
         int sayac=0;
         ArrayList<String> agirlikArray = new ArrayList<>();

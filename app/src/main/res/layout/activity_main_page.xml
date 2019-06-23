@@ -166,8 +166,8 @@
                    android:orientation="vertical">
                    <com.hookedonplay.decoviewlib.DecoView
                        android:id="@+id/harcananKaloriDecode"
-                       android:layout_width="100dp"
-                       android:layout_height="100dp"
+                       android:layout_width="90dp"
+                       android:layout_height="90dp"
                        android:layout_margin="10dp"/>
                    <TextView
                        android:layout_width="wrap_content"
@@ -184,8 +184,8 @@
                    android:orientation="vertical">
                    <com.hookedonplay.decoviewlib.DecoView
                        android:id="@+id/kolestrolDecode"
-                       android:layout_width="100dp"
-                       android:layout_height="100dp"
+                       android:layout_width="90dp"
+                       android:layout_height="90dp"
                        android:layout_margin="10dp"/>
                    <TextView
                        android:layout_width="wrap_content"
@@ -202,8 +202,8 @@
                    android:orientation="vertical">
                <com.hookedonplay.decoviewlib.DecoView
                    android:id="@+id/vucutSicakligiDecode"
-                   android:layout_width="100dp"
-                   android:layout_height="100dp"
+                   android:layout_width="90dp"
+                   android:layout_height="90dp"
                    android:layout_margin="10dp"/>
                <TextView
                    android:layout_width="wrap_content"
